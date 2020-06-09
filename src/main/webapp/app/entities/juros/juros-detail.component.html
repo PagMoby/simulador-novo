@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="juros">
+            <h2><span jhiTranslate="simuladorApp.juros.detail.title">Juros</span> {{ juros.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="simuladorApp.juros.juros">Juros</span></dt>
+                <dd>
+                    <span>{{ juros.juros }}</span>
+                </dd>
+                <dt><span jhiTranslate="simuladorApp.juros.operacao">Operacao</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'simuladorApp.Operacao.' + juros.operacao }}">{{ juros.operacao }}</span>
+                </dd>
+                <dt><span jhiTranslate="simuladorApp.juros.plano">Plano</span></dt>
+                <dd>
+                    <div *ngIf="juros.planoId">
+                        <a [routerLink]="['/plano', juros.planoId, 'view']">{{ juros.planoNome }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/juros', juros.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

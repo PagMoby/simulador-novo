@@ -1,0 +1,36 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="seller">
+            <h2><span jhiTranslate="simuladorApp.seller.detail.title">Seller</span> {{ seller.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="simuladorApp.seller.email">Email</span></dt>
+                <dd>
+                    <span>{{ seller.email }}</span>
+                </dd>
+                <dt><span jhiTranslate="simuladorApp.seller.plano">Plano</span></dt>
+                <dd>
+                    <div *ngIf="seller.planoId">
+                        <a [routerLink]="['/plano', seller.planoId, 'view']">{{ seller.planoNome }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/seller', seller.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

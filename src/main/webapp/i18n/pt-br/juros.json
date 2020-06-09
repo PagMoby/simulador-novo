@@ -1,0 +1,24 @@
+{
+  "simuladorApp": {
+    "juros": {
+      "home": {
+        "title": "Juros",
+        "createLabel": "Criar novo Juros",
+        "createOrEditLabel": "Criar ou editar Juros",
+        "notFound": "Nenhum Juros encontrado"
+      },
+      "created": "Um novo Juros foi criado com o identificador {{ param }}",
+      "updated": "Um Juros foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Juros foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Juros {{ id }}?"
+      },
+      "detail": {
+        "title": "Juros"
+      },
+      "juros": "Juros",
+      "operacao": "Operacao",
+      "plano": "Plano"
+    }
+  }
+}

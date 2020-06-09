@@ -1,0 +1,23 @@
+{
+  "simuladorApp": {
+    "seller": {
+      "home": {
+        "title": "Sellers",
+        "createLabel": "Criar novo Seller",
+        "createOrEditLabel": "Criar ou editar Seller",
+        "notFound": "Nenhum Seller encontrado"
+      },
+      "created": "Um novo Seller foi criado com o identificador {{ param }}",
+      "updated": "Um Seller foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Seller foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Seller {{ id }}?"
+      },
+      "detail": {
+        "title": "Seller"
+      },
+      "email": "Email",
+      "plano": "Plano"
+    }
+  }
+}

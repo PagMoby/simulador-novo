@@ -1,0 +1,32 @@
+entity Seller{
+	email String
+}
+
+entity Plano{
+	nome String
+}
+
+entity Juros{
+	juros BigDecimal,
+    operacao Operacao
+}
+
+enum Operacao{
+	DEBITO, CREDITO1X, CREDITO2X, CREDITO3X,
+    CREDITO4X, CREDITO5X, CREDITO6X,
+    CREDITO7X, CREDITO8X, CREDITO9X,
+    CREDITO10X, CREDITO11X, CREDITO12X
+}
+
+relationship OneToMany{ 
+    Plano{juros(operacao)} to Juros{plano(nome)},
+    Plano{seller(email)} to Seller{plano(nome)} 
+}
+
+dto * with mapstruct
+
+service all with serviceImpl
+
+paginate Seller with pagination
+paginate Plano with pagination
+paginate Juros with pagination

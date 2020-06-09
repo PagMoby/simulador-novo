@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-juros-heading" jhiTranslate="simuladorApp.juros.home.createOrEditLabel">Create or edit a Juros</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="simuladorApp.juros.juros" for="field_juros">Juros</label>
+                    <input type="number" class="form-control" name="juros" id="field_juros"
+                           formControlName="juros"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="simuladorApp.juros.operacao" for="field_operacao">Operacao</label>
+                    <select class="form-control" name="operacao" formControlName="operacao" id="field_operacao">
+                        <option value="DEBITO">{{ 'simuladorApp.Operacao.DEBITO' | translate }}</option>
+                        <option value="CREDITO1X">{{ 'simuladorApp.Operacao.CREDITO1X' | translate }}</option>
+                        <option value="CREDITO2X">{{ 'simuladorApp.Operacao.CREDITO2X' | translate }}</option>
+                        <option value="CREDITO3X">{{ 'simuladorApp.Operacao.CREDITO3X' | translate }}</option>
+                        <option value="CREDITO4X">{{ 'simuladorApp.Operacao.CREDITO4X' | translate }}</option>
+                        <option value="CREDITO5X">{{ 'simuladorApp.Operacao.CREDITO5X' | translate }}</option>
+                        <option value="CREDITO6X">{{ 'simuladorApp.Operacao.CREDITO6X' | translate }}</option>
+                        <option value="CREDITO7X">{{ 'simuladorApp.Operacao.CREDITO7X' | translate }}</option>
+                        <option value="CREDITO8X">{{ 'simuladorApp.Operacao.CREDITO8X' | translate }}</option>
+                        <option value="CREDITO9X">{{ 'simuladorApp.Operacao.CREDITO9X' | translate }}</option>
+                        <option value="CREDITO10X">{{ 'simuladorApp.Operacao.CREDITO10X' | translate }}</option>
+                        <option value="CREDITO11X">{{ 'simuladorApp.Operacao.CREDITO11X' | translate }}</option>
+                        <option value="CREDITO12X">{{ 'simuladorApp.Operacao.CREDITO12X' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="simuladorApp.juros.plano" for="field_plano">Plano</label>
+                    <select class="form-control" id="field_plano" name="plano" formControlName="planoId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="planoOption.id" *ngFor="let planoOption of planos; trackBy: trackById">{{ planoOption.nome }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

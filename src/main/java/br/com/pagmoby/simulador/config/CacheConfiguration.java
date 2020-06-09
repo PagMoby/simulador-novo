@@ -48,6 +48,11 @@ public class CacheConfiguration {
             createCache(cm, br.com.pagmoby.simulador.domain.User.class.getName());
             createCache(cm, br.com.pagmoby.simulador.domain.Authority.class.getName());
             createCache(cm, br.com.pagmoby.simulador.domain.User.class.getName() + ".authorities");
+            createCache(cm, br.com.pagmoby.simulador.domain.Seller.class.getName());
+            createCache(cm, br.com.pagmoby.simulador.domain.Plano.class.getName());
+            createCache(cm, br.com.pagmoby.simulador.domain.Plano.class.getName() + ".juros");
+            createCache(cm, br.com.pagmoby.simulador.domain.Plano.class.getName() + ".sellers");
+            createCache(cm, br.com.pagmoby.simulador.domain.Juros.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

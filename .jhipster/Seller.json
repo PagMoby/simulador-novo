@@ -1,0 +1,29 @@
+{
+  "name": "Seller",
+  "fields": [
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "plano",
+      "otherEntityRelationshipName": "seller",
+      "relationshipName": "plano",
+      "otherEntityField": "nome"
+    }
+  ],
+  "changelogDate": "20200609212046",
+  "entityTableName": "seller",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

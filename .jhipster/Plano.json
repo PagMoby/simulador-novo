@@ -1,0 +1,34 @@
+{
+  "name": "Plano",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "juros",
+      "otherEntityRelationshipName": "plano",
+      "relationshipName": "juros"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "seller",
+      "otherEntityRelationshipName": "plano",
+      "relationshipName": "seller"
+    }
+  ],
+  "changelogDate": "20200609212146",
+  "entityTableName": "plano",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

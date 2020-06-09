@@ -2,8 +2,10 @@ package br.com.pagmoby.simulador.service;
 
 import br.com.pagmoby.simulador.config.Constants;
 import br.com.pagmoby.simulador.domain.Authority;
+import br.com.pagmoby.simulador.domain.Seller;
 import br.com.pagmoby.simulador.domain.User;
 import br.com.pagmoby.simulador.repository.AuthorityRepository;
+import br.com.pagmoby.simulador.repository.SellerRepository;
 import br.com.pagmoby.simulador.repository.UserRepository;
 import br.com.pagmoby.simulador.security.AuthoritiesConstants;
 import br.com.pagmoby.simulador.security.SecurityUtils;
@@ -43,11 +45,14 @@ public class UserService {
 
     private final CacheManager cacheManager;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository, CacheManager cacheManager) {
+    private final SellerRepository sellerRepository;
+
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository, CacheManager cacheManager, SellerRepository sellerRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.authorityRepository = authorityRepository;
         this.cacheManager = cacheManager;
+        this.sellerRepository = sellerRepository;
     }
 
     public Optional<User> activateRegistration(String key) {
@@ -113,12 +118,17 @@ public class UserService {
         newUser.setImageUrl(userDTO.getImageUrl());
         newUser.setLangKey(userDTO.getLangKey());
         // new user is not active
-        newUser.setActivated(false);
+        newUser.setActivated(true);
         // new user gets registration key
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         Set<Authority> authorities = new HashSet<>();
         authorityRepository.findById(AuthoritiesConstants.USER).ifPresent(authorities::add);
         newUser.setAuthorities(authorities);
+
+        Seller seller = new Seller(userDTO.getEmail());
+        sellerRepository.save(seller);
+        newUser.setSeller(seller);
+
         userRepository.save(newUser);
         this.clearUserCaches(newUser);
         log.debug("Created Information for User: {}", newUser);
@@ -162,6 +172,11 @@ public class UserService {
                 .collect(Collectors.toSet());
             user.setAuthorities(authorities);
         }
+
+        Seller seller = new Seller(userDTO.getEmail());
+        sellerRepository.save(seller);
+        user.setSeller(seller);
+
         userRepository.save(user);
         this.clearUserCaches(user);
         log.debug("Created Information for User: {}", user);
