@@ -1,0 +1,43 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "br.com.pagmoby.simulador",
+      "nativeLanguage": "pt-br"
+    },
+    "jhipsterVersion": "6.9.1",
+    "applicationType": "monolith",
+    "baseName": "Simulador",
+    "packageName": "br.com.pagmoby.simulador",
+    "packageFolder": "br/com/pagmoby/simulador",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": "spring-websocket",
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "ZGVkMmIxZGFhMzRjMmJlYjRmYjVlODE0MDM5OTcwODVjOTNlY2Q2OTI2ODYwNDMwMTcwMWI4NTkxMDIyYWYxODdmMDI0MjA0NGI3NGYxNTI2MWQyOTgyMjZkNWY3ZmY3ZTRhMzdiMjU2ZmE3NTI4Mjk2MmJlY2UwYjg4ODc2MmE=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "creationTimestamp": 1591737115723,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "pt-br",
+    "languages": ["pt-br"],
+    "blueprints": []
+  }
+}
