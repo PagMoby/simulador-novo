@@ -1,11 +1,6 @@
-id;nome
-1;standardization Handmade invoice
-2;hack Madagascar Ergonomic Plastic Fish
-3;Generic Cotton Ball Cotton
-4;alarm Future
-5;matrix
-6;encryption indexing
-7;Rhode Island
-8;THX
-9;Health New Jersey Chips
-10;Cordoba Oro
+id,nome
+1,Aluguel
+2,Gold
+3,Silver
+4,Platinum
+5,Zero

@@ -2,9 +2,11 @@ package br.com.pagmoby.simulador.service;
 
 import br.com.pagmoby.simulador.config.Constants;
 import br.com.pagmoby.simulador.domain.Authority;
+import br.com.pagmoby.simulador.domain.Plano;
 import br.com.pagmoby.simulador.domain.Seller;
 import br.com.pagmoby.simulador.domain.User;
 import br.com.pagmoby.simulador.repository.AuthorityRepository;
+import br.com.pagmoby.simulador.repository.PlanoRepository;
 import br.com.pagmoby.simulador.repository.SellerRepository;
 import br.com.pagmoby.simulador.repository.UserRepository;
 import br.com.pagmoby.simulador.security.AuthoritiesConstants;
@@ -47,12 +49,15 @@ public class UserService {
 
     private final SellerRepository sellerRepository;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository, CacheManager cacheManager, SellerRepository sellerRepository) {
+    private final PlanoRepository planoRepository;
+
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository, CacheManager cacheManager, SellerRepository sellerRepository, PlanoRepository planoRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.authorityRepository = authorityRepository;
         this.cacheManager = cacheManager;
         this.sellerRepository = sellerRepository;
+        this.planoRepository = planoRepository;
     }
 
     public Optional<User> activateRegistration(String key) {
@@ -125,14 +130,26 @@ public class UserService {
         authorityRepository.findById(AuthoritiesConstants.USER).ifPresent(authorities::add);
         newUser.setAuthorities(authorities);
 
-        Seller seller = new Seller(userDTO.getEmail());
-        sellerRepository.save(seller);
-        newUser.setSeller(seller);
+        newUser= userRepository.save(newUser);
 
-        userRepository.save(newUser);
+        Seller seller = new Seller(userDTO.getLogin());
+        seller = recuperarPlano(seller);
+        seller.setUser(newUser);
+        sellerRepository.save(seller);
+
         this.clearUserCaches(newUser);
+
+
         log.debug("Created Information for User: {}", newUser);
         return newUser;
+    }
+
+    private Seller recuperarPlano(Seller seller){
+        Plano pLano = planoRepository.getOne(1L);
+        if(pLano != null){
+            seller.setPlano(pLano);
+        }
+        return seller;
     }
 
     private boolean removeNonActivatedUser(User existingUser) {
@@ -173,11 +190,12 @@ public class UserService {
             user.setAuthorities(authorities);
         }
 
-        Seller seller = new Seller(userDTO.getEmail());
-        sellerRepository.save(seller);
-        user.setSeller(seller);
-
         userRepository.save(user);
+        Seller seller = new Seller(userDTO.getLogin());
+        seller = recuperarPlano(seller);
+        seller.setUser(user);
+        sellerRepository.save(seller);
+
         this.clearUserCaches(user);
         log.debug("Created Information for User: {}", user);
         return user;
