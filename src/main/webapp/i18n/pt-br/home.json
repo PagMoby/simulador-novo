@@ -1,19 +1,19 @@
 {
   "home": {
-    "title": "Bem vindo, Java Hipster!",
-    "subtitle": "Esta é a página principal",
+    "title": "Bem vindo a PagMoby!",
+    "subtitle": "Aqui você poderá simular suas vendas",
     "logged": {
       "message": "Você está logado como \"{{username}}\"."
     },
-    "question": "Em caso de dúvida sobre o JHipster:",
+    "question": "Em caso de dúvida sobre a PagMoby:",
     "link": {
-      "homepage": "Página principal JHipster",
-      "stackoverflow": "JHipster no Stack Overflow",
-      "bugtracker": "JHipster bug tracker",
-      "chat": "Sala de bate-papo pública JHipster",
-      "follow": "siga @jhipster no Twitter"
+      "homepage": "Página principal PagMoby",
+      "stackoverflow": "PagMoby no Stack Overflow",
+      "bugtracker": "PagMoby bug tracker",
+      "chat": "Sala de bate-papo pública PagMoby",
+      "follow": "siga @pagmoby no Twitter"
     },
-    "like": "Se você gosta do JHipster, não se esqueça de avaliar no",
+    "like": "Se você gosta do PagMoby, não se esqueça de avaliar no",
     "github": "GitHub"
   }
 }
