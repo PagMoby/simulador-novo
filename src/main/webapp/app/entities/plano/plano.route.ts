@@ -39,7 +39,7 @@ export const planoRoute: Routes = [
     path: '',
     component: PlanoComponent,
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN],
       defaultSort: 'id,asc',
       pageTitle: 'simuladorApp.plano.home.title',
     },
@@ -52,7 +52,7 @@ export const planoRoute: Routes = [
       plano: PlanoResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN],
       pageTitle: 'simuladorApp.plano.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -64,7 +64,7 @@ export const planoRoute: Routes = [
       plano: PlanoResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN],
       pageTitle: 'simuladorApp.plano.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -76,7 +76,7 @@ export const planoRoute: Routes = [
       plano: PlanoResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN],
       pageTitle: 'simuladorApp.plano.home.title',
     },
     canActivate: [UserRouteAccessService],

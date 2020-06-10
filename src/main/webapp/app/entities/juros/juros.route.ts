@@ -40,7 +40,7 @@ export const jurosRoute: Routes = [
     path: '',
     component: JurosComponent,
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN],
       defaultSort: 'id,asc',
       pageTitle: 'simuladorApp.juros.home.title',
     },
@@ -51,7 +51,7 @@ export const jurosRoute: Routes = [
     component: SimuladorComponent,
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'Simulador',
+      pageTitle: 'simuladorApp.juros.simulador.title',
     },
     canActivate: [UserRouteAccessService],
   },
