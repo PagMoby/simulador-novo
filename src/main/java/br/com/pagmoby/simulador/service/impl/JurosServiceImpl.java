@@ -104,7 +104,7 @@ public class JurosServiceImpl implements JurosService {
     }
 
     @Override
-    public Optional<List<TabelaDTO>> simular(String email, BigDecimal valor, Boolean semJuros) {
+    public Optional<List<TabelaDTO>> simular(String email, BigDecimal valor, String responsavel) {
         Optional<Seller> seller = sellerRepository.findSellerByEmail(email);
         List<TabelaDTO> tabela = new ArrayList<>();
         if (seller.isPresent()) {
@@ -112,7 +112,7 @@ public class JurosServiceImpl implements JurosService {
                 List<Juros> juros = jurosRepository.findJurosByPlano(seller.get().getPlano().getId());
                 for (Juros juro : juros) {
                     TabelaDTO tabelaDTO = new TabelaDTO();
-                    if (semJuros) {
+                    if (responsavel.equals("VENDEDOR")) {
                         tabelaDTO.setOperacao(juro.getOperacao());
                         tabelaDTO.setValorDaVenda(formatarValor(valor));
                         tabelaDTO.setValorReceber(semJuros(juro.getJuros(), valor));

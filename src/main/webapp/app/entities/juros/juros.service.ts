@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
 import { IJuros } from 'app/shared/model/juros.model';
+import { ITabela } from 'app/shared/model/tabela.model';
 
 type EntityResponseType = HttpResponse<IJuros>;
 type EntityArrayResponseType = HttpResponse<IJuros[]>;
@@ -34,5 +35,9 @@ export class JurosService {
 
   delete(id: number): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
+  }
+
+  simular(valor: number, semJuros: string): Observable<EntityArrayResponseType> {
+    return this.http.post<ITabela[]>(`${this.resourceUrl}/simular/${valor}/${semJuros}`, null, { observe: 'response' });
   }
 }

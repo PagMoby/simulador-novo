@@ -14,6 +14,6 @@ import java.util.List;
 @Repository
 public interface JurosRepository extends JpaRepository<Juros, Long> {
 
-    @Query("SELECT a FROM Juros a WHERE a.plano.id = ?1")
+    @Query("SELECT a FROM Juros a WHERE a.plano.id = ?1 ORDER BY a.id")
     List<Juros> findJurosByPlano(Long id);
 }

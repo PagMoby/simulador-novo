@@ -47,5 +47,5 @@ public interface JurosService {
      */
     void delete(Long id);
 
-    Optional<List<TabelaDTO>> simular(String email, BigDecimal valor, Boolean semJuros);
+    Optional<List<TabelaDTO>> simular(String email, BigDecimal valor, String responsavel);
 }

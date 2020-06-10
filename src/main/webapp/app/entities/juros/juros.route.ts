@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
-import { Resolve, ActivatedRouteSnapshot, Routes, Router } from '@angular/router';
-import { Observable, of, EMPTY } from 'rxjs';
+import { ActivatedRouteSnapshot, Resolve, Router, Routes } from '@angular/router';
+import { EMPTY, Observable, of } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
 
 import { Authority } from 'app/shared/constants/authority.constants';
@@ -11,6 +11,7 @@ import { JurosService } from './juros.service';
 import { JurosComponent } from './juros.component';
 import { JurosDetailComponent } from './juros-detail.component';
 import { JurosUpdateComponent } from './juros-update.component';
+import { SimuladorComponent } from './simulador.component';
 
 @Injectable({ providedIn: 'root' })
 export class JurosResolve implements Resolve<IJuros> {
@@ -46,13 +47,22 @@ export const jurosRoute: Routes = [
     canActivate: [UserRouteAccessService],
   },
   {
+    path: 'simular',
+    component: SimuladorComponent,
+    data: {
+      authorities: [Authority.USER],
+      pageTitle: 'Simulador',
+    },
+    canActivate: [UserRouteAccessService],
+  },
+  {
     path: ':id/view',
     component: JurosDetailComponent,
     resolve: {
       juros: JurosResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN],
       pageTitle: 'simuladorApp.juros.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -64,7 +74,7 @@ export const jurosRoute: Routes = [
       juros: JurosResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN],
       pageTitle: 'simuladorApp.juros.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -76,7 +86,7 @@ export const jurosRoute: Routes = [
       juros: JurosResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN],
       pageTitle: 'simuladorApp.juros.home.title',
     },
     canActivate: [UserRouteAccessService],

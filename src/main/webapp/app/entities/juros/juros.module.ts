@@ -7,10 +7,11 @@ import { JurosDetailComponent } from './juros-detail.component';
 import { JurosUpdateComponent } from './juros-update.component';
 import { JurosDeleteDialogComponent } from './juros-delete-dialog.component';
 import { jurosRoute } from './juros.route';
+import { SimuladorComponent } from './simulador.component';
 
 @NgModule({
   imports: [SimuladorSharedModule, RouterModule.forChild(jurosRoute)],
-  declarations: [JurosComponent, JurosDetailComponent, JurosUpdateComponent, JurosDeleteDialogComponent],
+  declarations: [SimuladorComponent, JurosComponent, JurosDetailComponent, JurosUpdateComponent, JurosDeleteDialogComponent],
   entryComponents: [JurosDeleteDialogComponent],
 })
 export class SimuladorJurosModule {}

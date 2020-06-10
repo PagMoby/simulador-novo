@@ -1,0 +1,75 @@
+<div>
+    <div class="col-12">
+        <h2 id="jhi-simulador-heading" jhiTranslate="pagmobyApp.simulador.home.title">Simulador de Taxas</h2>
+        <br/>
+        <br/>
+        <div>
+            <form name="editForm" role="form" novalidate (ngSubmit)="simular()" #editForm="ngForm">
+                <div class="form-group">
+                    <div class="form-group">
+                        <label class="form-control-label"
+                               for="field_responsavelTaxa" jhiTranslate="pagmobyApp.simulador.responsavelTaxa">Responsável
+                            Taxa</label>
+                        <select class="form-control" name="responsavelTaxa" [(ngModel)]="responsavelTaxa"
+                                id="field_responsavelTaxa" required>
+                            <option value="VENDEDOR">Vendedor</option>
+                            <option value="COMPRADOR">Comprador</option>
+                        </select>
+                        <div
+                            [hidden]="!(editForm.controls.responsavelTaxa?.dirty && editForm.controls.responsavelTaxa?.invalid)">
+                            <small class="form-text text-danger"
+                                   [hidden]="!editForm.controls.responsavelTaxa?.errors?.required"
+                                   jhiTranslate="entity.validation.required">
+                                This field is required.
+                            </small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_valorDaVenda"
+                               jhiTranslate="pagmobyApp.simulador.valorDaVenda">Valor</label>
+                        <input type="text" class="form-control" name="valorDaVenda" id="field_valorDaVenda"
+                               [(ngModel)]="valorDaVenda" required/>
+                        <div
+                            [hidden]="!(editForm.controls.valorDaVenda?.dirty && editForm.controls.valorDaVenda?.invalid)">
+                            <small class="form-text text-danger"
+                                   [hidden]="!editForm.controls.valorDaVenda?.errors?.required"
+                                   jhiTranslate="entity.validation.required">
+                                This field is required.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <jhi-alert-error></jhi-alert-error>
+                <br/>
+                <div class="float-right">
+                    <button type="submit" id="save-entity" [disabled]="editForm.form.invalid"
+                            class="btn btn-primary">
+                        <span>Simular</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th><span>Operação</span></th>
+                <th><span>Valor a Receber</span></th>
+                <th><span>Valor da Venda</span></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let condicao of condicoes">
+                <td>{{condicao.operacao}}</td>
+                <td>{{condicao.valorReceber}}</td>
+                <td>{{condicao.valorDaVenda}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

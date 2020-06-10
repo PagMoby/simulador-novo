@@ -134,8 +134,8 @@ public class JurosResource {
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new juros, or with status {@code 400 (Bad Request)} if the juros has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
-    @PostMapping("/simular/{valor}/{semJuros}")
-    public ResponseEntity<List<TabelaDTO>> createJuros(@PathVariable BigDecimal valor, @PathVariable Boolean semJuros)
+    @PostMapping("/juros/simular/{valor}/{responsavel}")
+    public ResponseEntity<List<TabelaDTO>> createJuros(@PathVariable BigDecimal valor, @PathVariable String responsavel)
         throws URISyntaxException {
         log.debug("Simular : {}", valor);
         if (valor == null) {
@@ -143,7 +143,7 @@ public class JurosResource {
         }
         String login = SecurityUtils.getCurrentUserLogin().orElseThrow(NotFoundValueException::new);
 
-        Optional<List<TabelaDTO>> result = jurosService.simular(login, valor, semJuros);
+        Optional<List<TabelaDTO>> result = jurosService.simular(login, valor, responsavel);
         return ResponseEntity.ok().body(result.get());
     }
 }
