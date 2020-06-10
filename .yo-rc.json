@@ -38,6 +38,8 @@
     "enableTranslation": true,
     "nativeLanguage": "pt-br",
     "languages": ["pt-br"],
-    "blueprints": []
+    "blueprints": [],
+    "herokuAppName": "pagmoby-simulador",
+    "herokuDeployType": "git"
   }
 }
